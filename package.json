@@ -14,7 +14,8 @@
   },
   "scripts": {
     "test": "jest",
-    "test:e2e": "jest --config jest-e2e.config.ts"
+    "test:e2e": "jest --config jest-e2e.config.ts",
+    "postinstall": "prisma generate"
   },
   "dependencies": {
     "@types/cors": "^2.8.13",
