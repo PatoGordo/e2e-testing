@@ -1,4 +1,4 @@
-import express from "express";
+import express, { Router } from "express";
 import cors from "cors";
 import { PrismaLessonRepository } from "./repositories/prisma/PrismaLesson.repository";
 import { CreateLessonService } from "./services/CreateLesson.service";
@@ -9,7 +9,9 @@ app.use(express.json());
 
 app.use(cors());
 
-app.post("/lesson", async (req, res) => {
+const router = Router();
+
+router.post("/lesson", async (req, res) => {
   const { title, description } = req.body;
 
   const repository = new PrismaLessonRepository();
@@ -30,3 +32,5 @@ app.post("/lesson", async (req, res) => {
     });
   }
 });
+
+app.use("/api/", router);
